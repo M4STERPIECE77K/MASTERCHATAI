@@ -1,0 +1,8 @@
+{
+    "name": "MASTERCHATAI",
+    "description": "A high-performance, intuitive AI chat application powered by M4STERPIECE, featuring a sleek modern UI with real-time streaming responses and conversation history.",
+    "requestFramePermissions": [
+        "camera",
+        "microphone"
+    ]
+}
