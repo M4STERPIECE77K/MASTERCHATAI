@@ -60,12 +60,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                             <span className="flex-1 truncate text-sm font-medium">
                                 {conv.title || 'New Chat'}
                             </span>
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    onDelete(conv.id);
-                                }}
-                                className={`opacity-0 group-hover:opacity-100 p-1 hover:text-red-400 bg-transparent transition-all ${activeId === conv.id ? 'opacity-100' : ''}`}>
+                            <button onClick={(e) => { e.stopPropagation(); onDelete(conv.id); }} className={`opacity-0 group-hover:opacity-100 p-1 hover:text-red-400 bg-transparent transition-all ${activeId === conv.id ? 'opacity-100' : ''}`}>
                                 <Trash2 size={14} />
                             </button>
                         </div>

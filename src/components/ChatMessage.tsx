@@ -2,7 +2,7 @@
 import React from 'react';
 import { Message } from '../../types';
 import { User, Copy, Check } from 'lucide-react';
-import aiLogo from '../assets/AI.jpg';
+import aiLogo from '../assets/16340244_v920-kul-53.jpg';
 
 interface ChatMessageProps {
     message: Message;
@@ -25,23 +25,17 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
                     }`}>
                     {isAssistant ? <img src={aiLogo} alt="AI" className="w-full h-full object-cover" /> : <User size={18} className="text-slate-600 dark:text-white" />}
                 </div>
-
                 <div className="flex-1 space-y-2 min-w-0">
                     <div className="flex items-center justify-between">
                         <span className="text-sm font-semibold text-slate-500 dark:text-slate-300">
                             {isAssistant ? 'MASTERCHAT AI' : 'You'}
                         </span>
                         {isAssistant && (
-                            <button
-                                onClick={handleCopy}
-                                className="text-slate-500 hover:text-slate-300 transition-colors"
-                                title="Copy response"
-                            >
+                            <button onClick={handleCopy} className="text-slate-500 hover:text-slate-300 transition-colors" title="Copy response">
                                 {copied ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
                             </button>
                         )}
                     </div>
-
                     <div className="text-slate-800 dark:text-slate-200 leading-relaxed text-base prose dark:prose-invert prose-sm max-w-none">
                         {message.content.split('\n').map((line, i) => (
                             <p key={i} className={line.trim() === '' ? 'h-4' : 'mb-2 last:mb-0'}>

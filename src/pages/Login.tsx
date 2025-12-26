@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { ArrowRight, Lock, Mail } from 'lucide-react';
+import { ArrowRight, User, Mail, Loader2 } from 'lucide-react';
 import { useGoogleLogin } from '@react-oauth/google';
 import aiLogo from '../assets/16340244_v920-kul-53.jpg';
 
@@ -11,6 +11,7 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
+    const [isFormLoading, setIsFormLoading] = useState(false);
 
     const login = useGoogleLogin({
         onSuccess: async (tokenResponse) => {
@@ -29,10 +30,15 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         onError: () => console.log('Login Failed'),
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (email && name) {
-            onLogin(name, email);
+            setIsFormLoading(true);
+            // Simulate real authentication delay
+            setTimeout(() => {
+                onLogin(name, email);
+                setIsFormLoading(false);
+            }, 1500);
         }
     };
 
@@ -69,7 +75,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                             <label className="text-sm font-medium text-slate-600 dark:text-slate-300 ml-1">Name</label>
                             <div className="relative">
                                 <input type="text" required value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl py-3 px-11 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all outline-none shadow-sm" />
-                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
+                                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
                             </div>
                         </div>
                         <div className="space-y-2">
@@ -79,9 +85,15 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
                             </div>
                         </div>
-                        <button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-xl shadow-lg shadow-indigo-500/25 transition-all flex items-center justify-center gap-2 group mt-2">
-                            Sign In
-                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                        <button type="submit" disabled={isFormLoading} className="w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white font-semibold py-3 px-4 rounded-xl shadow-lg shadow-indigo-500/25 transition-all flex items-center justify-center gap-2 group mt-2">
+                            {isFormLoading ? (
+                                <Loader2 size={18} className="animate-spin" />
+                            ) : (
+                                <>
+                                    Sign In
+                                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                </>
+                            )}
                         </button>
                     </form>
                 </div>
