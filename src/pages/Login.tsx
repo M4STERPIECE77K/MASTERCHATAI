@@ -34,7 +34,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         e.preventDefault();
         if (email && name) {
             setIsFormLoading(true);
-            // Simulate real authentication delay
             setTimeout(() => {
                 onLogin(name, email);
                 setIsFormLoading(false);
