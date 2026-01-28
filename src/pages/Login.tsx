@@ -45,12 +45,12 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         <div className="min-h-screen w-full flex items-center justify-center bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-300">
             <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-600/20 blur-[120px] rounded-full"></div>
             <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-600/10 blur-[120px] rounded-full"></div>
-            <div className="w-full max-w-md p-8 z-10">
+            <div className="w-full max-w-md p-6 md:p-8 z-10">
                 <div className="text-center mb-10">
                     <div className="inline-flex items-center justify-center w-20 h-20 shadow-2xl shadow-indigo-500/40 mb-6 rotate-3 overflow-hidden rounded-2xl">
                         <img src={aiLogo} alt="AI Logo" className="w-full h-full object-cover" />
                     </div>
-                    <h1 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight mb-2">MASTERCHAT AI</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white tracking-tight mb-2">MASTERCHAT AI</h1>
                     <p className="text-slate-500 dark:text-slate-400">Experience the future of intelligent conversation</p>
                 </div>
                 <div className="space-y-4">
